@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Mentorship Sessions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f5f7;
+            margin: 20px;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        table {
+            width: 90%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background: #fff;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #009879;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        a {
+            text-decoration: none;
+            padding: 5px 10px;
+            background-color: #dc3545;
+            color: white;
+            border-radius: 3px;
+            transition: background-color 0.3s;
+        }
+        a:hover {
+            background-color: #c82333;
+        }
+        .new-session {
+            display: block;
+            width: fit-content;
+            margin: 0 auto 20px auto;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .new-session:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+<h2>All Mentorship Sessions</h2>
+
+<a th:href="@{/sessions/new}" class="new-session">Book New Session</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Student</th>
+            <th>Mentor</th>
+            <th>Date & Time</th>
+            <th>Mode</th>
+            <th>Feedback</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="session : ${sessions}">
+            <td th:text="${session.id}"></td>
+            <td th:text="${session.student.name}"></td>
+            <td th:text="${session.mentor.name}"></td>
+            <td th:text="${session.dateTime}"></td>
+            <td th:text="${session.mode}"></td>
+            <td th:text="${session.feedback}"></td>
+            <td>
+                <a th:href="@{'/sessions/delete/' + ${session.id}}">Delete</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

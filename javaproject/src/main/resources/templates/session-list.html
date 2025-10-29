@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Session List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        h2 {
+            color: #333;
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .actions a {
+            text-decoration: none;
+            margin-right: 5px;
+            padding: 5px 10px;
+            background-color: #dc3545;
+            color: white;
+            border-radius: 3px;
+            transition: background-color 0.3s;
+        }
+        .actions a:hover {
+            background-color: #c82333;
+        }
+        .links {
+            text-align: center;
+        }
+        .links a {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .links a:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Session List</h2>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Topic</th>
+                <th>Date</th>
+                <th>Mentor</th>
+                <th>Student</th>
+                <th>Actions</th>
+            </tr>
+            <tr th:each="sess : ${sessions}">
+                <td th:text="${sess.id}"></td>
+                <td th:text="${sess.topic}"></td>
+                <td th:text="${sess.date}"></td>
+                <td th:text="${sess.mentor.name}"></td>
+                <td th:text="${sess.student.name}"></td>
+                <td class="actions">
+                    <a th:href="@{/sessions/delete/{id}(id=${sess.id})}">Delete</a>
+                </td>
+            </tr>
+        </table>
+        <div class="links">
+            <a th:href="@{/sessions/new}">Book New Session</a>
+            <a th:href="@{/}">Home</a>
+        </div>
+    </div>
+</body>
+</html>

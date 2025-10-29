@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Career Guidance System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        a {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Welcome to Career Guidance and Alumni Mentorship System</h2>
+        <a th:href="@{/mentors}">View Mentors</a>
+        <a th:href="@{/addMentor}">Add Mentor</a>
+        <a th:href="@{/students}">View Students</a>
+        <a th:href="@{/addStudent}">Add Student</a>
+        <a th:href="@{/sessions}">View Sessions</a>
+        <a th:href="@{/sessions/new}">Book New Session</a>
+    </div>
+</body>
+</html>
